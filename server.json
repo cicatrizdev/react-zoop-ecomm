@@ -1,0 +1,844 @@
+{
+	"categories": [
+		{
+			"id": 1,
+			"name": "Eletrônicos",
+			"description": "Produtos eletrônicos de última geração para todas as suas necessidades tecnológicas",
+			"image": "https://picsum.photos/400/300?random=1"
+		},
+		{
+			"id": 2,
+			"name": "Moda",
+			"description": "Roupas, acessórios e calçados para todos os estilos e ocasiões",
+			"image": "https://picsum.photos/400/300?random=2"
+		},
+		{
+			"id": 3,
+			"name": "Casa e Jardim",
+			"description": "Produtos para decorar, organizar e transformar sua casa em um lar aconchegante",
+			"image": "https://picsum.photos/400/300?random=3"
+		},
+		{
+			"id": 4,
+			"name": "Esportes",
+			"description": "Equipamentos e acessórios esportivos para todas as modalidades e níveis",
+			"image": "https://picsum.photos/400/300?random=4"
+		},
+		{
+			"id": 5,
+			"name": "Livros",
+			"description": "Livros de diversos gêneros, didáticos e literatura para expandir seus horizontes",
+			"image": "https://picsum.photos/400/300?random=5"
+		},
+		{
+			"id": 6,
+			"name": "Beleza e Saúde",
+			"description": "Produtos de beleza, cuidados pessoais e bem-estar para sua autoestima",
+			"image": "https://picsum.photos/400/300?random=6"
+		}
+	],
+	"products": [
+		{
+			"id": 1,
+			"name": "Smartphone Galaxy Pro",
+			"description": "Smartphone de última geração com câmera de 108MP e bateria de longa duração",
+			"price": 2499.99,
+			"image": "https://picsum.photos/400/400?random=7",
+			"categoryId": 1
+		},
+		{
+			"id": 2,
+			"name": "Notebook Ultra Slim",
+			"description": "Notebook ultrafino com processador de alta performance e tela 4K",
+			"price": 4599.99,
+			"image": "https://picsum.photos/400/400?random=8",
+			"categoryId": 1
+		},
+		{
+			"id": 3,
+			"name": "Fones de Ouvido Wireless",
+			"description": "Fones bluetooth com cancelamento de ruído ativo e qualidade premium",
+			"price": 899.99,
+			"image": "https://picsum.photos/400/400?random=9",
+			"categoryId": 1
+		},
+		{
+			"id": 4,
+			"name": "Smart TV 55\" 4K",
+			"description": "Smart TV com resolução 4K, HDR e sistema operacional integrado",
+			"price": 3299.99,
+			"image": "https://picsum.photos/400/400?random=10",
+			"categoryId": 1
+		},
+		{
+			"id": 5,
+			"name": "Tablet Pro 10\"",
+			"description": "Tablet profissional com caneta stylus e tela retina",
+			"price": 1899.99,
+			"image": "https://picsum.photos/400/400?random=11",
+			"categoryId": 1
+		},
+		{
+			"id": 6,
+			"name": "Camisa Social Premium",
+			"description": "Camisa social de algodão egípcio com acabamento premium",
+			"price": 299.99,
+			"image": "https://picsum.photos/400/400?random=12",
+			"categoryId": 2
+		},
+		{
+			"id": 7,
+			"name": "Calça Jeans Skinny",
+			"description": "Calça jeans skinny com elastano para máximo conforto",
+			"price": 199.99,
+			"image": "https://picsum.photos/400/400?random=13",
+			"categoryId": 2
+		},
+		{
+			"id": 8,
+			"name": "Tênis Esportivo",
+			"description": "Tênis esportivo com tecnologia de amortecimento avançada",
+			"price": 399.99,
+			"image": "https://picsum.photos/400/400?random=14",
+			"categoryId": 2
+		},
+		{
+			"id": 9,
+			"name": "Bolsa Feminina Elegante",
+			"description": "Bolsa feminina em couro legítimo com acabamento refinado",
+			"price": 599.99,
+			"image": "https://picsum.photos/400/400?random=15",
+			"categoryId": 2
+		},
+		{
+			"id": 10,
+			"name": "Relógio Digital Smart",
+			"description": "Relógio inteligente com monitor cardíaco e GPS integrado",
+			"price": 1299.99,
+			"image": "https://picsum.photos/400/400?random=16",
+			"categoryId": 2
+		},
+		{
+			"id": 11,
+			"name": "Sofá 3 Lugares",
+			"description": "Sofá confortável em veludo com estrutura resistente",
+			"price": 1899.99,
+			"image": "https://picsum.photos/400/400?random=17",
+			"categoryId": 3
+		},
+		{
+			"id": 12,
+			"name": "Mesa de Jantar",
+			"description": "Mesa de jantar em madeira maciça para 6 pessoas",
+			"price": 2499.99,
+			"image": "https://picsum.photos/400/400?random=18",
+			"categoryId": 3
+		},
+		{
+			"id": 13,
+			"name": "Luminária de Mesa",
+			"description": "Luminária LED moderna com controle de intensidade",
+			"price": 299.99,
+			"image": "https://picsum.photos/400/400?random=19",
+			"categoryId": 3
+		},
+		{
+			"id": 14,
+			"name": "Vaso Decorativo",
+			"description": "Vaso cerâmico artesanal para decorar qualquer ambiente",
+			"price": 159.99,
+			"image": "https://picsum.photos/400/400?random=20",
+			"categoryId": 3
+		},
+		{
+			"id": 15,
+			"name": "Cortina Blackout",
+			"description": "Cortina blackout com controle de luz e privacidade",
+			"price": 399.99,
+			"image": "https://picsum.photos/400/400?random=21",
+			"categoryId": 3
+		},
+		{
+			"id": 16,
+			"name": "Bicicleta Mountain Bike",
+			"description": "Bicicleta mountain bike com 21 marchas e suspensão dianteira",
+			"price": 1899.99,
+			"image": "https://picsum.photos/400/400?random=22",
+			"categoryId": 4
+		},
+		{
+			"id": 17,
+			"name": "Esteira Elétrica",
+			"description": "Esteira elétrica com controle de velocidade e inclinação",
+			"price": 2999.99,
+			"image": "https://picsum.photos/400/400?random=23",
+			"categoryId": 4
+		},
+		{
+			"id": 18,
+			"name": "Bola de Futebol Oficial",
+			"description": "Bola de futebol oficial com tecnologia de última geração",
+			"price": 199.99,
+			"image": "https://picsum.photos/400/400?random=24",
+			"categoryId": 4
+		},
+		{
+			"id": 19,
+			"name": "Raquete de Tênis",
+			"description": "Raquete de tênis profissional com cordas de alta tensão",
+			"price": 899.99,
+			"image": "https://picsum.photos/400/400?random=25",
+			"categoryId": 4
+		},
+		{
+			"id": 20,
+			"name": "Roupa de Academia",
+			"description": "Conjunto esportivo com tecnologia dry-fit",
+			"price": 299.99,
+			"image": "https://picsum.photos/400/400?random=26",
+			"categoryId": 4
+		},
+		{
+			"id": 21,
+			"name": "O Senhor dos Anéis",
+			"description": "Trilogia completa de J.R.R. Tolkien em edição especial",
+			"price": 89.99,
+			"image": "https://picsum.photos/400/400?random=27",
+			"categoryId": 5
+		},
+		{
+			"id": 22,
+			"name": "1984 - George Orwell",
+			"description": "Clássico da literatura distópica em edição comentada",
+			"price": 49.99,
+			"image": "https://picsum.photos/400/400?random=28",
+			"categoryId": 5
+		},
+		{
+			"id": 23,
+			"name": "Livro de Receitas",
+			"description": "Livro com 500 receitas tradicionais e contemporâneas",
+			"price": 79.99,
+			"image": "https://picsum.photos/400/400?random=29",
+			"categoryId": 5
+		},
+		{
+			"id": 24,
+			"name": "Biografia de Einstein",
+			"description": "Biografia completa de Albert Einstein com fotos raras",
+			"price": 69.99,
+			"image": "https://picsum.photos/400/400?random=30",
+			"categoryId": 5
+		},
+		{
+			"id": 25,
+			"name": "Livro de Autoajuda",
+			"description": "Guia prático para desenvolvimento pessoal e profissional",
+			"price": 59.99,
+			"image": "https://picsum.photos/400/400?random=31",
+			"categoryId": 5
+		},
+		{
+			"id": 26,
+			"name": "Kit de Maquiagem",
+			"description": "Kit completo com paleta de sombras, batons e pincéis",
+			"price": 299.99,
+			"image": "https://picsum.photos/400/400?random=32",
+			"categoryId": 6
+		},
+		{
+			"id": 27,
+			"name": "Perfume Masculino",
+			"description": "Perfume masculino com fragrância amadeirada e duradoura",
+			"price": 399.99,
+			"image": "https://picsum.photos/400/400?random=33",
+			"categoryId": 6
+		},
+		{
+			"id": 28,
+			"name": "Creme Hidratante",
+			"description": "Creme hidratante facial com vitamina C e ácido hialurônico",
+			"price": 159.99,
+			"image": "https://picsum.photos/400/400?random=34",
+			"categoryId": 6
+		},
+		{
+			"id": 29,
+			"name": "Escova de Dentes Elétrica",
+			"description": "Escova elétrica com tecnologia sônica e timer",
+			"price": 299.99,
+			"image": "https://picsum.photos/400/400?random=35",
+			"categoryId": 6
+		},
+		{
+			"id": 30,
+			"name": "Suplemento Vitamínico",
+			"description": "Complexo vitamínico completo para saúde e bem-estar",
+			"price": 199.99,
+			"image": "https://picsum.photos/400/400?random=36",
+			"categoryId": 6
+		},
+		{
+			"id": 31,
+			"name": "Câmera DSLR Profissional",
+			"description": "Câmera DSLR com 24MP e kit de lentes intercambiáveis",
+			"price": 3999.99,
+			"image": "https://picsum.photos/400/400?random=37",
+			"categoryId": 1
+		},
+		{
+			"id": 32,
+			"name": "Console de Videogame",
+			"description": "Console de última geração com controle sem fio",
+			"price": 3499.99,
+			"image": "https://picsum.photos/400/400?random=38",
+			"categoryId": 1
+		},
+		{
+			"id": 33,
+			"name": "Impressora Multifuncional",
+			"description": "Impressora 3 em 1 com scanner e copiadora",
+			"price": 899.99,
+			"image": "https://picsum.photos/400/400?random=39",
+			"categoryId": 1
+		},
+		{
+			"id": 34,
+			"name": "Vestido de Festa",
+			"description": "Vestido elegante para ocasiões especiais",
+			"price": 799.99,
+			"image": "https://picsum.photos/400/400?random=40",
+			"categoryId": 2
+		},
+		{
+			"id": 35,
+			"name": "Jaqueta de Couro",
+			"description": "Jaqueta de couro legítimo com forro interno",
+			"price": 899.99,
+			"image": "https://picsum.photos/400/400?random=41",
+			"categoryId": 2
+		},
+		{
+			"id": 36,
+			"name": "Cama Box Casal",
+			"description": "Cama box com colchão ortopédico e cabeceira",
+			"price": 1599.99,
+			"image": "https://picsum.photos/400/400?random=42",
+			"categoryId": 3
+		},
+		{
+			"id": 37,
+			"name": "Guarda-Roupa 6 Portas",
+			"description": "Guarda-roupa espaçoso com espelho e gavetas",
+			"price": 2199.99,
+			"image": "https://picsum.photos/400/400?random=43",
+			"categoryId": 3
+		},
+		{
+			"id": 38,
+			"name": "Prancha de Surf",
+			"description": "Prancha de surf profissional para iniciantes",
+			"price": 1299.99,
+			"image": "https://picsum.photos/400/400?random=44",
+			"categoryId": 4
+		},
+		{
+			"id": 39,
+			"name": "Pesos para Academia",
+			"description": "Kit de pesos ajustáveis de 2kg a 20kg",
+			"price": 599.99,
+			"image": "https://picsum.photos/400/400?random=45",
+			"categoryId": 4
+		},
+		{
+			"id": 40,
+			"name": "Romance Contemporâneo",
+			"description": "Bestseller de romance com história envolvente",
+			"price": 39.99,
+			"image": "https://picsum.photos/400/400?random=46",
+			"categoryId": 5
+		},
+		{
+			"id": 41,
+			"name": "Protetor Solar FPS 50",
+			"description": "Protetor solar facial com proteção UVA/UVB",
+			"price": 89.99,
+			"image": "https://picsum.photos/400/400?random=47",
+			"categoryId": 6
+		},
+		{
+			"id": 42,
+			"name": "Laptop Gamer",
+			"description": "Laptop gamer com placa de vídeo dedicada",
+			"price": 5999.99,
+			"image": "https://picsum.photos/400/400?random=48",
+			"categoryId": 1
+		},
+		{
+			"id": 43,
+			"name": "Blazer Feminino",
+			"description": "Blazer elegante para uso profissional",
+			"price": 499.99,
+			"image": "https://picsum.photos/400/400?random=49",
+			"categoryId": 2
+		},
+		{
+			"id": 44,
+			"name": "Tapete Persa",
+			"description": "Tapete persa artesanal com desenhos tradicionais",
+			"price": 899.99,
+			"image": "https://picsum.photos/400/400?random=50",
+			"categoryId": 3
+		},
+		{
+			"id": 45,
+			"name": "Bola de Basquete",
+			"description": "Bola oficial de basquete tamanho 7",
+			"price": 249.99,
+			"image": "https://picsum.photos/400/400?random=51",
+			"categoryId": 4
+		},
+		{
+			"id": 46,
+			"name": "Dicionário Aurélio",
+			"description": "Dicionário da língua portuguesa atualizado",
+			"price": 129.99,
+			"image": "https://picsum.photos/400/400?random=52",
+			"categoryId": 5
+		},
+		{
+			"id": 47,
+			"name": "Shampoo Profissional",
+			"description": "Shampoo para cabelos danificados com queratina",
+			"price": 79.99,
+			"image": "https://picsum.photos/400/400?random=53",
+			"categoryId": 6
+		},
+		{
+			"id": 48,
+			"name": "Monitor 27\" 4K",
+			"description": "Monitor profissional com resolução 4K e cores precisas",
+			"price": 2499.99,
+			"image": "https://picsum.photos/400/400?random=54",
+			"categoryId": 1
+		},
+		{
+			"id": 49,
+			"name": "Sapato Social",
+			"description": "Sapato social em couro com solado de borracha",
+			"price": 399.99,
+			"image": "https://picsum.photos/400/400?random=55",
+			"categoryId": 2
+		},
+		{
+			"id": 50,
+			"name": "Poltrona Reclinável",
+			"description": "Poltrona reclinável com massageador integrado",
+			"price": 1899.99,
+			"image": "https://picsum.photos/400/400?random=56",
+			"categoryId": 3
+		},
+		{
+			"id": 51,
+			"name": "Skate Profissional",
+			"description": "Skate completo com trucks e rodas de qualidade",
+			"price": 399.99,
+			"image": "https://picsum.photos/400/400?random=57",
+			"categoryId": 4
+		},
+		{
+			"id": 52,
+			"name": "Livro de Poesia",
+			"description": "Antologia de poemas de autores contemporâneos",
+			"price": 69.99,
+			"image": "https://picsum.photos/400/400?random=58",
+			"categoryId": 5
+		},
+		{
+			"id": 53,
+			"name": "Máscara Facial",
+			"description": "Máscara facial hidratante com ácido hialurônico",
+			"price": 49.99,
+			"image": "https://picsum.photos/400/400?random=59",
+			"categoryId": 6
+		},
+		{
+			"id": 54,
+			"name": "Teclado Mecânico",
+			"description": "Teclado mecânico RGB com switches blue",
+			"price": 599.99,
+			"image": "https://picsum.photos/400/400?random=60",
+			"categoryId": 1
+		},
+		{
+			"id": 55,
+			"name": "Blusa de Tricô",
+			"description": "Blusa de tricô artesanal em lã natural",
+			"price": 299.99,
+			"image": "https://picsum.photos/400/400?random=61",
+			"categoryId": 2
+		},
+		{
+			"id": 56,
+			"name": "Espelho de Parede",
+			"description": "Espelho decorativo com moldura dourada",
+			"price": 399.99,
+			"image": "https://picsum.photos/400/400?random=62",
+			"categoryId": 3
+		},
+		{
+			"id": 57,
+			"name": "Bola de Vôlei",
+			"description": "Bola oficial de vôlei de quadra",
+			"price": 179.99,
+			"image": "https://picsum.photos/400/400?random=63",
+			"categoryId": 4
+		},
+		{
+			"id": 58,
+			"name": "Livro de História",
+			"description": "História do Brasil em edição ilustrada",
+			"price": 89.99,
+			"image": "https://picsum.photos/400/400?random=64",
+			"categoryId": 5
+		},
+		{
+			"id": 59,
+			"name": "Desodorante Roll-on",
+			"description": "Desodorante sem álcool com fragrância suave",
+			"price": 29.99,
+			"image": "https://picsum.photos/400/400?random=65",
+			"categoryId": 6
+		},
+		{
+			"id": 60,
+			"name": "Mouse Gamer",
+			"description": "Mouse gamer com 6 botões e RGB customizável",
+			"price": 299.99,
+			"image": "https://picsum.photos/400/400?random=66",
+			"categoryId": 1
+		},
+		{
+			"id": 61,
+			"name": "Calça Cargo",
+			"description": "Calça cargo com múltiplos bolsos e tecido resistente",
+			"price": 249.99,
+			"image": "https://picsum.photos/400/400?random=67",
+			"categoryId": 2
+		},
+		{
+			"id": 62,
+			"name": "Rack para TV",
+			"description": "Rack moderno para TV com prateleiras",
+			"price": 699.99,
+			"image": "https://picsum.photos/400/400?random=68",
+			"categoryId": 3
+		},
+		{
+			"id": 63,
+			"name": "Bicicleta Ergométrica",
+			"description": "Bicicleta ergométrica com monitor de frequência cardíaca",
+			"price": 2499.99,
+			"image": "https://picsum.photos/400/400?random=69",
+			"categoryId": 4
+		},
+		{
+			"id": 64,
+			"name": "Livro de Ficção Científica",
+			"description": "Romance de ficção científica bestseller",
+			"price": 59.99,
+			"image": "https://picsum.photos/400/400?random=70",
+			"categoryId": 5
+		},
+		{
+			"id": 65,
+			"name": "Creme para Mãos",
+			"description": "Creme hidratante para mãos com vitamina E",
+			"price": 39.99,
+			"image": "https://picsum.photos/400/400?random=71",
+			"categoryId": 6
+		},
+		{
+			"id": 66,
+			"name": "Webcam HD",
+			"description": "Webcam com resolução 1080p e microfone integrado",
+			"price": 199.99,
+			"image": "https://picsum.photos/400/400?random=72",
+			"categoryId": 1
+		},
+		{
+			"id": 67,
+			"name": "Vestido Casual",
+			"description": "Vestido casual confortável para o dia a dia",
+			"price": 199.99,
+			"image": "https://picsum.photos/400/400?random=73",
+			"categoryId": 2
+		},
+		{
+			"id": 68,
+			"name": "Cadeira de Escritório",
+			"description": "Cadeira ergonômica com apoio lombar ajustável",
+			"price": 899.99,
+			"image": "https://picsum.photos/400/400?random=74",
+			"categoryId": 3
+		},
+		{
+			"id": 69,
+			"name": "Bola de Tênis",
+			"description": "Lata com 3 bolas de tênis profissionais",
+			"price": 49.99,
+			"image": "https://picsum.photos/400/400?random=75",
+			"categoryId": 4
+		},
+		{
+			"id": 70,
+			"name": "Livro de Filosofia",
+			"description": "Introdução à filosofia ocidental",
+			"price": 79.99,
+			"image": "https://picsum.photos/400/400?random=76",
+			"categoryId": 5
+		},
+		{
+			"id": 71,
+			"name": "Escova de Cabelo",
+			"description": "Escova de cabelo antiestática com cerdas suaves",
+			"price": 59.99,
+			"image": "https://picsum.photos/400/400?random=77",
+			"categoryId": 6
+		},
+		{
+			"id": 72,
+			"name": "Alto-falante Bluetooth",
+			"description": "Alto-falante portátil com som surround",
+			"price": 399.99,
+			"image": "https://picsum.photos/400/400?random=78",
+			"categoryId": 1
+		},
+		{
+			"id": 73,
+			"name": "Jaqueta Jeans",
+			"description": "Jaqueta jeans clássica com lavagem vintage",
+			"price": 349.99,
+			"image": "https://picsum.photos/400/400?random=79",
+			"categoryId": 2
+		},
+		{
+			"id": 74,
+			"name": "Abajur de Mesa",
+			"description": "Abajur decorativo com base de mármore",
+			"price": 249.99,
+			"image": "https://picsum.photos/400/400?random=80",
+			"categoryId": 3
+		},
+		{
+			"id": 75,
+			"name": "Bola de Golfe",
+			"description": "Kit com 12 bolas de golfe profissionais",
+			"price": 199.99,
+			"image": "https://picsum.photos/400/400?random=81",
+			"categoryId": 4
+		},
+		{
+			"id": 76,
+			"name": "Livro de Psicologia",
+			"description": "Manual de psicologia cognitiva",
+			"price": 99.99,
+			"image": "https://picsum.photos/400/400?random=82",
+			"categoryId": 5
+		},
+		{
+			"id": 77,
+			"name": "Sabonete Líquido",
+			"description": "Sabonete líquido com fragrância natural",
+			"price": 34.99,
+			"image": "https://picsum.photos/400/400?random=83",
+			"categoryId": 6
+		},
+		{
+			"id": 78,
+			"name": "Roteador Wi-Fi 6",
+			"description": "Roteador de alta velocidade com tecnologia Wi-Fi 6",
+			"price": 599.99,
+			"image": "https://picsum.photos/400/400?random=84",
+			"categoryId": 1
+		},
+		{
+			"id": 79,
+			"name": "Saia Midi",
+			"description": "Saia midi plissada em tecido leve",
+			"price": 179.99,
+			"image": "https://picsum.photos/400/400?random=85",
+			"categoryId": 2
+		},
+		{
+			"id": 80,
+			"name": "Tapete de Yoga",
+			"description": "Tapete de yoga antiderrapante e ecológico",
+			"price": 129.99,
+			"image": "https://picsum.photos/400/400?random=86",
+			"categoryId": 3
+		},
+		{
+			"id": 81,
+			"name": "Bola de Rugby",
+			"description": "Bola oficial de rugby tamanho 5",
+			"price": 299.99,
+			"image": "https://picsum.photos/400/400?random=87",
+			"categoryId": 4
+		},
+		{
+			"id": 82,
+			"name": "Livro de Arte",
+			"description": "História da arte em edição luxuosa",
+			"price": 149.99,
+			"image": "https://picsum.photos/400/400?random=88",
+			"categoryId": 5
+		},
+		{
+			"id": 83,
+			"name": "Condicionador Profissional",
+			"description": "Condicionador para cabelos secos e danificados",
+			"price": 69.99,
+			"image": "https://picsum.photos/400/400?random=89",
+			"categoryId": 6
+		},
+		{
+			"id": 84,
+			"name": "Microfone USB",
+			"description": "Microfone condensador para streaming e gravação",
+			"price": 299.99,
+			"image": "https://picsum.photos/400/400?random=90",
+			"categoryId": 1
+		},
+		{
+			"id": 85,
+			"name": "Blazer Masculino",
+			"description": "Blazer masculino slim fit em lã",
+			"price": 599.99,
+			"image": "https://picsum.photos/400/400?random=91",
+			"categoryId": 2
+		},
+		{
+			"id": 86,
+			"name": "Cortina de Rolo",
+			"description": "Cortina de rolo blackout com controle remoto",
+			"price": 449.99,
+			"image": "https://picsum.photos/400/400?random=92",
+			"categoryId": 3
+		},
+		{
+			"id": 87,
+			"name": "Bola de Handebol",
+			"description": "Bola oficial de handebol tamanho 3",
+			"price": 159.99,
+			"image": "https://picsum.photos/400/400?random=93",
+			"categoryId": 4
+		},
+		{
+			"id": 88,
+			"name": "Livro de Economia",
+			"description": "Princípios de economia para iniciantes",
+			"price": 89.99,
+			"image": "https://picsum.photos/400/400?random=94",
+			"categoryId": 5
+		},
+		{
+			"id": 89,
+			"name": "Perfume Feminino",
+			"description": "Perfume feminino com fragrância floral suave",
+			"price": 299.99,
+			"image": "https://picsum.photos/400/400?random=95",
+			"categoryId": 6
+		},
+		{
+			"id": 90,
+			"name": "Placa de Vídeo",
+			"description": "Placa de vídeo gamer com 8GB GDDR6",
+			"price": 3999.99,
+			"image": "https://picsum.photos/400/400?random=96",
+			"categoryId": 1
+		},
+		{
+			"id": 91,
+			"name": "Camiseta Básica",
+			"description": "Camiseta básica 100% algodão em várias cores",
+			"price": 49.99,
+			"image": "https://picsum.photos/400/400?random=97",
+			"categoryId": 2
+		},
+		{
+			"id": 92,
+			"name": "Jogo de Panelas",
+			"description": "Jogo de panelas antiaderente com 5 peças",
+			"price": 399.99,
+			"image": "https://picsum.photos/400/400?random=98",
+			"categoryId": 3
+		},
+		{
+			"id": 93,
+			"name": "Bola de Futebol Americano",
+			"description": "Bola oficial de futebol americano",
+			"price": 279.99,
+			"image": "https://picsum.photos/400/400?random=99",
+			"categoryId": 4
+		},
+		{
+			"id": 94,
+			"name": "Livro de Matemática",
+			"description": "Matemática financeira para concursos",
+			"price": 119.99,
+			"image": "https://picsum.photos/400/400?random=100",
+			"categoryId": 5
+		},
+		{
+			"id": 95,
+			"name": "Escova de Dentes Manual",
+			"description": "Escova de dentes com cerdas macias",
+			"price": 19.99,
+			"image": "https://picsum.photos/400/400?random=101",
+			"categoryId": 6
+		},
+		{
+			"id": 96,
+			"name": "Processador Intel",
+			"description": "Processador Intel Core i7 de última geração",
+			"price": 2499.99,
+			"image": "https://picsum.photos/400/400?random=102",
+			"categoryId": 1
+		},
+		{
+			"id": 97,
+			"name": "Calça Social",
+			"description": "Calça social em tecido premium",
+			"price": 349.99,
+			"image": "https://picsum.photos/400/400?random=103",
+			"categoryId": 2
+		},
+		{
+			"id": 98,
+			"name": "Mesa de Centro",
+			"description": "Mesa de centro em madeira maciça",
+			"price": 599.99,
+			"image": "https://picsum.photos/400/400?random=104",
+			"categoryId": 3
+		},
+		{
+			"id": 99,
+			"name": "Bola de Ping Pong",
+			"description": "Kit com 6 bolas de ping pong profissionais",
+			"price": 39.99,
+			"image": "https://picsum.photos/400/400?random=105",
+			"categoryId": 4
+		},
+		{
+			"id": 100,
+			"name": "Livro de Geografia",
+			"description": "Atlas geográfico mundial atualizado",
+			"price": 159.99,
+			"image": "https://picsum.photos/400/400?random=106",
+			"categoryId": 5
+		}
+	],
+	"cart": [],
+	"favorites": []
+}
