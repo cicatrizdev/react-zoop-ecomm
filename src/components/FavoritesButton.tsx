@@ -13,7 +13,10 @@ interface FavoritesButtonProps {
 	className?: string;
 }
 
-const FavoritesButton: React.FC<FavoritesButtonProps> = ({ product, className = '' }) => {
+const FavoritesButton: React.FC<FavoritesButtonProps> = ({
+	product,
+	className = '',
+}) => {
 	const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
 	const isProductFavorite = isFavorite(product.id);
 

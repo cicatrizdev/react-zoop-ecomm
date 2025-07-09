@@ -2,29 +2,37 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CategoryCard from '../components/CategoryCard';
 import ProductCardWithFavorites from '../components/ProductCardWithFavorites';
-import NewsletterInput from '../components/NewsletterInput';
+
 import Accordion from '../components/Accordion';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import WelcomeModal from '../components/WelcomeModal';
-import { useCategories, useProducts } from '../hooks';
+import { useCategories, useProducts, useSearch } from '../hooks';
 
 export function Home() {
 	const [showWelcome, setShowWelcome] = useState(false);
-	const [selectedCategory, setSelectedCategory] = useState<string | number | null>(null);
-	const [searchTerm, setSearchTerm] = useState('');
+	const [selectedCategory, setSelectedCategory] = useState<
+		string | number | null
+	>(null);
 	const navigate = useNavigate();
 	const { categories, loading, error } = useCategories();
-	const { products, loading: productsLoading, error: productsError } = useProducts();
+	const {
+		products,
+		loading: productsLoading,
+		error: productsError,
+	} = useProducts();
+	const { searchTerm, clearSearch } = useSearch();
 
 	const handleOpen = () => setShowWelcome(true);
 	const handleClose = () => setShowWelcome(false);
 
 	const handleCategoryClick = (categoryId: string | number) => {
 		setSelectedCategory(categoryId);
+		clearSearch(); // Clears the search when a category is selected
 	};
 
 	const handleBackToHome = () => {
 		setSelectedCategory(null);
+		clearSearch(); // Clears the search when returning to home
 	};
 
 	const handleViewProduct = (productId: string | number) => {
@@ -41,48 +49,36 @@ export function Home() {
 	const filteredProducts = selectedCategory
 		? (() => {
 				return products.filter(
-					(product) =>
+					product =>
 						product.categoryId === selectedCategory ||
 						String(product.categoryId) === String(selectedCategory)
 				);
-		  })()
+			})()
 		: [];
 
 	const selectedCategoryName = selectedCategory
 		? (() => {
 				return (
 					categories.find(
-						(cat) => cat.id === selectedCategory || String(cat.id) === String(selectedCategory)
+						cat =>
+							cat.id === selectedCategory ||
+							String(cat.id) === String(selectedCategory)
 					)?.name || ''
 				);
-		  })()
+			})()
 		: '';
 
+	// Search results
 	const searchResults = searchTerm
 		? (() => {
 				const lowercaseQuery = searchTerm.toLowerCase();
 				return products.filter(
-					(product) =>
+					product =>
 						product.name.toLowerCase().includes(lowercaseQuery) ||
 						product.description.toLowerCase().includes(lowercaseQuery)
 				);
-		  })()
+			})()
 		: [];
-
-	const productStats = (() => {
-		const totalProducts = products.length;
-		const totalCategories = categories.length;
-		const averagePrice =
-			products.reduce((sum, product) => sum + product.price, 0) / totalProducts || 0;
-		const expensiveProducts = products.filter((product) => product.price > averagePrice).length;
-
-		return {
-			totalProducts,
-			totalCategories,
-			averagePrice,
-			expensiveProducts,
-		};
-	})();
 
 	return (
 		<div className='bg-white'>
@@ -94,10 +90,13 @@ export function Home() {
 						<h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold font-montserrat leading-tight'>
 							Faça um <span className='text-blue2'>zoop</span>
 							<br />
-							<span className='text-magenta1 italic'>e realize seus desejos!</span>
+							<span className='text-magenta1 italic'>
+								e realize seus desejos!
+							</span>
 						</h1>
 						<p className='text-sm sm:text-base lg:text-lg max-w-md mx-auto lg:mx-0'>
-							Encontre tudo que você precisa em um só lugar com 15% de desconto na primeira compra!
+							Encontre tudo que você precisa em um só lugar com 15% de desconto
+							na primeira compra!
 						</p>
 						<button
 							className='bg-magenta1 hover:bg-magenta2 text-white font-montserrat rounded px-6 py-3 w-max mx-auto lg:mx-0 mt-2 transition-colors duration-200'
@@ -107,135 +106,40 @@ export function Home() {
 						</button>
 					</div>
 					<div className='flex-1 flex justify-center items-center'>
-						<ShoppingBagIcon sx={{ fontSize: { xs: 200, sm: 240, lg: 288 }, color: 'white' }} />
+						<ShoppingBagIcon
+							sx={{ fontSize: { xs: 200, sm: 240, lg: 288 }, color: 'white' }}
+						/>
 					</div>
 				</div>
 			</section>
 
-			{/* Barra de busca */}
-			<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
-				<div className='relative'>
-					<input
-						type='text'
-						placeholder='Buscar produtos...'
-						value={searchTerm}
-						onChange={(e) => setSearchTerm(e.target.value)}
-						className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue1'
-					/>
-					{searchTerm && (
-						<div className='absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-lg mt-1 max-h-60 overflow-y-auto z-10'>
-							{searchResults.map((product) => (
-								<div
-									key={product.id}
-									className='px-4 py-2 hover:bg-gray-100 cursor-pointer'
-									onClick={() => handleViewProduct(product.id)}
-								>
-									<div className='font-semibold'>{product.name}</div>
-									<div className='text-sm text-gray-600'>R$ {product.price.toFixed(2)}</div>
-								</div>
-							))}
-						</div>
-					)}
-				</div>
-			</section>
-
-			{/* Estatísticas (cálculo pesado) */}
-			<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
-				<div className='grid grid-cols-2 md:grid-cols-4 gap-4 text-center'>
-					<div className='bg-blue3 p-4 rounded-lg'>
-						<div className='text-2xl font-bold text-blue1'>{productStats.totalProducts}</div>
-						<div className='text-sm text-gray-600'>Produtos</div>
-					</div>
-					<div className='bg-blue3 p-4 rounded-lg'>
-						<div className='text-2xl font-bold text-blue1'>{productStats.totalCategories}</div>
-						<div className='text-sm text-gray-600'>Categorias</div>
-					</div>
-					<div className='bg-blue3 p-4 rounded-lg'>
-						<div className='text-2xl font-bold text-blue1'>
-							R$ {productStats.averagePrice.toFixed(2)}
-						</div>
-						<div className='text-sm text-gray-600'>Preço Médio</div>
-					</div>
-					<div className='bg-blue3 p-4 rounded-lg'>
-						<div className='text-2xl font-bold text-blue1'>{productStats.expensiveProducts}</div>
-						<div className='text-sm text-gray-600'>Produtos Caros</div>
-					</div>
-				</div>
-			</section>
-
-			{/* Categorias */}
-			<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
-				<h2 className='text-xl sm:text-2xl font-bold font-montserrat text-center mb-2'>
-					Categorias
-				</h2>
-				<p className='text-center text-gray-700 mb-6 sm:mb-8 text-sm sm:text-base'>
-					Escolha a categoria de produto que você deseja:
-				</p>
-
-				{loading && (
-					<div className='flex justify-center items-center py-8'>
-						<div className='animate-spin rounded-full h-8 w-8 border-b-2 border-blue1'></div>
-						<span className='ml-2 text-gray-600'>Carregando categorias...</span>
-					</div>
-				)}
-
-				{error && (
-					<div className='text-center py-8'>
-						<p className='text-red-600 mb-4'>Erro ao carregar categorias: {error}</p>
-						<button
-							onClick={() => window.location.reload()}
-							className='bg-blue1 text-white px-4 py-2 rounded hover:bg-blue2 transition-colors'
-						>
-							Tentar novamente
-						</button>
-					</div>
-				)}
-
-				{!loading && !error && categories.length > 0 && (
-					<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center'>
-						{categories.map((category) => (
-							<CategoryCard
-								key={category.id}
-								image={category.image}
-								label={category.name}
-								onClick={() => handleCategoryClick(category.id)}
-							/>
-						))}
-					</div>
-				)}
-
-				{!loading && !error && categories.length === 0 && (
-					<div className='text-center py-8'>
-						<p className='text-gray-600'>Nenhuma categoria encontrada.</p>
-					</div>
-				)}
-			</section>
-
-			{/* Resultados da busca ou Mais procurados da semana */}
-			{selectedCategory ? (
+			{/* Resultados da busca */}
+			{searchTerm && (
 				<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
 					<div className='flex items-center justify-between mb-4 sm:mb-6'>
 						<h2 className='text-xl sm:text-2xl font-bold font-montserrat'>
-							Resultados da busca - {selectedCategoryName}
+							Resultados da busca para "{searchTerm}"
 						</h2>
 						<button
-							onClick={handleBackToHome}
+							onClick={clearSearch}
 							className='text-magenta1 font-semibold hover:underline transition-colors duration-200'
 						>
-							Voltar ao início
+							Limpar busca
 						</button>
 					</div>
 
 					{productsLoading && (
 						<div className='flex justify-center items-center py-8'>
 							<div className='animate-spin rounded-full h-8 w-8 border-b-2 border-blue1'></div>
-							<span className='ml-2 text-gray-600'>Carregando produtos...</span>
+							<span className='ml-2 text-gray-600'>Buscando produtos...</span>
 						</div>
 					)}
 
 					{productsError && (
 						<div className='text-center py-8'>
-							<p className='text-red-600 mb-4'>Erro ao carregar produtos: {productsError}</p>
+							<p className='text-red-600 mb-4'>
+								Erro ao carregar produtos: {productsError}
+							</p>
 							<button
 								onClick={() => window.location.reload()}
 								className='bg-blue1 text-white px-4 py-2 rounded hover:bg-blue2 transition-colors'
@@ -245,9 +149,9 @@ export function Home() {
 						</div>
 					)}
 
-					{!productsLoading && !productsError && filteredProducts.length > 0 && (
+					{!productsLoading && !productsError && searchResults.length > 0 && (
 						<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6'>
-							{filteredProducts.map((product) => (
+							{searchResults.map(product => (
 								<ProductCardWithFavorites
 									key={product.id}
 									image={product.image}
@@ -263,67 +167,198 @@ export function Home() {
 						</div>
 					)}
 
-					{!productsLoading && !productsError && filteredProducts.length === 0 && (
+					{!productsLoading && !productsError && searchResults.length === 0 && (
 						<div className='text-center py-8'>
-							<p className='text-gray-600'>Nenhum produto encontrado nesta categoria.</p>
-						</div>
-					)}
-				</section>
-			) : (
-				<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
-					<h2 className='text-xl sm:text-2xl font-bold font-montserrat mb-4 sm:mb-6'>
-						Mais procurados da semana
-					</h2>
-
-					{productsLoading && (
-						<div className='flex justify-center items-center py-8'>
-							<div className='animate-spin rounded-full h-8 w-8 border-b-2 border-blue1'></div>
-							<span className='ml-2 text-gray-600'>Carregando produtos...</span>
-						</div>
-					)}
-
-					{productsError && (
-						<div className='text-center py-8'>
-							<p className='text-red-600 mb-4'>Erro ao carregar produtos: {productsError}</p>
-							<button
-								onClick={() => window.location.reload()}
-								className='bg-blue1 text-white px-4 py-2 rounded hover:bg-blue2 transition-colors'
-							>
-								Tentar novamente
-							</button>
-						</div>
-					)}
-
-					{!productsLoading && !productsError && randomProducts.length > 0 && (
-						<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6'>
-							{randomProducts.map((product) => (
-								<ProductCardWithFavorites
-									key={product.id}
-									image={product.image}
-									title={product.name}
-									description={product.description}
-									price={product.price.toFixed(2).replace('.', ',')}
-									actionLabel='Quero ver!'
-									onAction={() => handleViewProduct(product.id)}
-									product={product}
-									showAddToCart={true}
-								/>
-							))}
-						</div>
-					)}
-
-					{!productsLoading && !productsError && randomProducts.length === 0 && (
-						<div className='text-center py-8'>
-							<p className='text-gray-600'>Nenhum produto encontrado.</p>
+							<p className='text-gray-600'>
+								Nenhum produto encontrado para "{searchTerm}". Tente usar termos
+								diferentes.
+							</p>
 						</div>
 					)}
 				</section>
 			)}
 
-			{/* Newsletter */}
-			<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
-				<NewsletterInput />
-			</section>
+			{/* Categorias - só mostra se não há busca ativa */}
+			{!searchTerm && (
+				<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
+					<h2 className='text-xl sm:text-2xl font-bold font-montserrat text-center mb-2'>
+						Categorias
+					</h2>
+					<p className='text-center text-gray-700 mb-6 sm:mb-8 text-sm sm:text-base'>
+						Escolha a categoria de produto que você deseja:
+					</p>
+
+					{loading && (
+						<div className='flex justify-center items-center py-8'>
+							<div className='animate-spin rounded-full h-8 w-8 border-b-2 border-blue1'></div>
+							<span className='ml-2 text-gray-600'>
+								Carregando categorias...
+							</span>
+						</div>
+					)}
+
+					{error && (
+						<div className='text-center py-8'>
+							<p className='text-red-600 mb-4'>
+								Erro ao carregar categorias: {error}
+							</p>
+							<button
+								onClick={() => window.location.reload()}
+								className='bg-blue1 text-white px-4 py-2 rounded hover:bg-blue2 transition-colors'
+							>
+								Tentar novamente
+							</button>
+						</div>
+					)}
+
+					{!loading && !error && categories.length > 0 && (
+						<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center'>
+							{categories.map(category => (
+								<CategoryCard
+									key={category.id}
+									image={category.image}
+									label={category.name}
+									onClick={() => handleCategoryClick(category.id)}
+								/>
+							))}
+						</div>
+					)}
+
+					{!loading && !error && categories.length === 0 && (
+						<div className='text-center py-8'>
+							<p className='text-gray-600'>Nenhuma categoria encontrada.</p>
+						</div>
+					)}
+				</section>
+			)}
+
+			{/* Resultados da categoria ou Mais procurados da semana - só mostra se não há busca ativa */}
+			{!searchTerm &&
+				(selectedCategory ? (
+					<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
+						<div className='flex items-center justify-between mb-4 sm:mb-6'>
+							<h2 className='text-xl sm:text-2xl font-bold font-montserrat'>
+								Resultados da busca - {selectedCategoryName}
+							</h2>
+							<button
+								onClick={handleBackToHome}
+								className='text-magenta1 font-semibold hover:underline transition-colors duration-200'
+							>
+								Voltar ao início
+							</button>
+						</div>
+
+						{productsLoading && (
+							<div className='flex justify-center items-center py-8'>
+								<div className='animate-spin rounded-full h-8 w-8 border-b-2 border-blue1'></div>
+								<span className='ml-2 text-gray-600'>
+									Carregando produtos...
+								</span>
+							</div>
+						)}
+
+						{productsError && (
+							<div className='text-center py-8'>
+								<p className='text-red-600 mb-4'>
+									Erro ao carregar produtos: {productsError}
+								</p>
+								<button
+									onClick={() => window.location.reload()}
+									className='bg-blue1 text-white px-4 py-2 rounded hover:bg-blue2 transition-colors'
+								>
+									Tentar novamente
+								</button>
+							</div>
+						)}
+
+						{!productsLoading &&
+							!productsError &&
+							filteredProducts.length > 0 && (
+								<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6'>
+									{filteredProducts.map(product => (
+										<ProductCardWithFavorites
+											key={product.id}
+											image={product.image}
+											title={product.name}
+											description={product.description}
+											price={product.price.toFixed(2).replace('.', ',')}
+											actionLabel='Quero ver!'
+											onAction={() => handleViewProduct(product.id)}
+											product={product}
+											showAddToCart={true}
+										/>
+									))}
+								</div>
+							)}
+
+						{!productsLoading &&
+							!productsError &&
+							filteredProducts.length === 0 && (
+								<div className='text-center py-8'>
+									<p className='text-gray-600'>
+										Nenhum produto encontrado nesta categoria.
+									</p>
+								</div>
+							)}
+					</section>
+				) : (
+					<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
+						<h2 className='text-xl sm:text-2xl font-bold font-montserrat mb-4 sm:mb-6'>
+							Mais procurados da semana
+						</h2>
+
+						{productsLoading && (
+							<div className='flex justify-center items-center py-8'>
+								<div className='animate-spin rounded-full h-8 w-8 border-b-2 border-blue1'></div>
+								<span className='ml-2 text-gray-600'>
+									Carregando produtos...
+								</span>
+							</div>
+						)}
+
+						{productsError && (
+							<div className='text-center py-8'>
+								<p className='text-red-600 mb-4'>
+									Erro ao carregar produtos: {productsError}
+								</p>
+								<button
+									onClick={() => window.location.reload()}
+									className='bg-blue1 text-white px-4 py-2 rounded hover:bg-blue2 transition-colors'
+								>
+									Tentar novamente
+								</button>
+							</div>
+						)}
+
+						{!productsLoading &&
+							!productsError &&
+							randomProducts.length > 0 && (
+								<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6'>
+									{randomProducts.map(product => (
+										<ProductCardWithFavorites
+											key={product.id}
+											image={product.image}
+											title={product.name}
+											description={product.description}
+											price={product.price.toFixed(2).replace('.', ',')}
+											actionLabel='Quero ver!'
+											onAction={() => handleViewProduct(product.id)}
+											product={product}
+											showAddToCart={true}
+										/>
+									))}
+								</div>
+							)}
+
+						{!productsLoading &&
+							!productsError &&
+							randomProducts.length === 0 && (
+								<div className='text-center py-8'>
+									<p className='text-gray-600'>Nenhum produto encontrado.</p>
+								</div>
+							)}
+					</section>
+				))}
 
 			{/* FAQ */}
 			<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
@@ -331,7 +366,8 @@ export function Home() {
 					Dúvidas frequentes
 				</h2>
 				<p className='text-center text-gray-700 mb-6 text-sm sm:text-base'>
-					Antes de entrar em contato, verifique se sua dúvida está respondida em nossa FAQ!
+					Antes de entrar em contato, verifique se sua dúvida está respondida em
+					nossa FAQ!
 				</p>
 				<Accordion
 					items={[

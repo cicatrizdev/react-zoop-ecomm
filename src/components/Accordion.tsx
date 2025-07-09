@@ -19,7 +19,10 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
 	return (
 		<div className='space-y-3'>
 			{items.map((item, idx) => (
-				<div key={idx} className='border border-blue2 rounded overflow-hidden bg-white shadow-sm'>
+				<div
+					key={idx}
+					className='border border-blue2 rounded overflow-hidden bg-white shadow-sm'
+				>
 					<button
 						className='w-full text-left px-3 sm:px-4 py-3 sm:py-4 font-montserrat font-semibold text-white bg-blue2/80 hover:bg-blue2 transition-colors duration-200 focus:outline-none text-sm sm:text-base'
 						onClick={() => toggle(idx)}

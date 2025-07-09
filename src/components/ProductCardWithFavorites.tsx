@@ -40,7 +40,10 @@ const ProductCardWithFavorites: React.FC<ProductCardWithFavoritesProps> = ({
 
 	return (
 		<div className='relative'>
-			<FavoritesButton product={product} className='absolute top-2 right-2 z-10' />
+			<FavoritesButton
+				product={product}
+				className='absolute top-2 right-2 z-10'
+			/>
 			<ProductCard
 				image={image}
 				title={title}

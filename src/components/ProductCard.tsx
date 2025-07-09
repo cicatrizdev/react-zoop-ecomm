@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ReactNode } from 'react';
 import { useCart } from '../hooks/useCart';
 
@@ -30,42 +29,28 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
 	const { addToCart, isInCart } = useCart();
 
-	// Função recriada a cada render (SEM useCallback)
+	// Function recreated on every render (WITHOUT useCallback)
 	const handleAddToCart = () => {
 		if (product) {
 			addToCart(product);
 		}
 	};
 
-	// Verificação ineficiente - executa a cada render
+	// Inefficient verification - runs on every render
 	const isProductInCart = product ? isInCart(product.id) : false;
 
-	// Processamento de texto ineficiente - executa a cada render
+	// Inefficient text processing - runs on every render
 	const processedTitle = (() => {
-		// Simula processamento de texto (como formatação, limpeza, etc.)
+		// Simulates text processing (like formatting, cleaning, etc.)
 		return title.trim().replace(/\s+/g, ' ');
 	})();
 
-	// Processamento de descrição ineficiente - executa a cada render
+	// Inefficient description processing - runs on every render
 	const processedDescription = (() => {
-		// Simula processamento de texto (como truncamento, formatação, etc.)
-		return description.length > 100 ? description.substring(0, 100) + '...' : description;
-	})();
-
-	// Cálculo de desconto ineficiente - executa a cada render
-	const discountInfo = (() => {
-		if (!product) return null;
-
-		// Simula cálculo de desconto baseado em regras de negócio
-		const hasDiscount = product.price > 50;
-		const discountPercentage = hasDiscount ? 10 : 0;
-		const discountedPrice = hasDiscount ? product.price * 0.9 : product.price;
-
-		return {
-			hasDiscount,
-			discountPercentage,
-			discountedPrice: discountedPrice.toFixed(2).replace('.', ','),
-		};
+		// Simulates text processing (like truncation, formatting, etc.)
+		return description.length > 100
+			? description.substring(0, 100) + '...'
+			: description;
 	})();
 
 	return (
@@ -88,17 +73,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
 				{processedDescription}
 			</p>
 
-			{/* Exibição de preço com desconto */}
+			{/* Price display */}
 			<div className='font-montserrat font-bold text-base sm:text-lg text-blue1 mb-3'>
-				{discountInfo?.hasDiscount ? (
-					<div>
-						<span className='line-through text-gray-500 text-sm'>R$ {price}</span>
-						<div className='text-red-600'>R$ {discountInfo.discountedPrice}</div>
-						<span className='text-xs text-red-600'>{discountInfo.discountPercentage}% OFF</span>
-					</div>
-				) : (
-					`R$ ${price}`
-				)}
+				R$ {price}
 			</div>
 
 			{showAddToCart && product && (

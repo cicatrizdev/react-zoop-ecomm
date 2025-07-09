@@ -44,8 +44,11 @@ const Favorites: React.FC = () => {
 			</div>
 
 			<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-				{favorites.map((product) => (
-					<div key={product.id} className='flex flex-col bg-blue3 rounded-lg shadow p-4 relative'>
+				{favorites.map(product => (
+					<div
+						key={product.id}
+						className='flex flex-col bg-blue3 rounded-lg shadow p-4 relative'
+					>
 						<div className='absolute top-2 right-2 z-10'>
 							<FavoritesButton product={product} />
 						</div>

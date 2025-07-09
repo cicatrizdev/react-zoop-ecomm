@@ -8,7 +8,9 @@ import SecurityIcon from '@mui/icons-material/Security';
 export const AboutUs: React.FC = () => {
 	return (
 		<div className='max-w-6xl mx-auto px-4 py-8'>
-			<h1 className='text-3xl font-bold text-gray-800 mb-6 font-montserrat'>Sobre Nós</h1>
+			<h1 className='text-3xl font-bold text-gray-800 mb-6 font-montserrat'>
+				Sobre Nós
+			</h1>
 
 			<div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
 				{/* Conteúdo Principal */}
@@ -19,15 +21,17 @@ export const AboutUs: React.FC = () => {
 						</h2>
 
 						<p className='text-gray-600 leading-relaxed mb-4'>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-							exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation ullamco laboris
+							nisi ut aliquip ex ea commodo consequat.
 						</p>
 
 						<p className='text-gray-600 leading-relaxed'>
-							Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-							nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-							officia deserunt mollit anim id est laborum.
+							Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+							cupidatat non proident, sunt in culpa qui officia deserunt mollit
+							anim id est laborum.
 						</p>
 					</div>
 
@@ -37,14 +41,16 @@ export const AboutUs: React.FC = () => {
 						</h2>
 
 						<p className='text-gray-600 leading-relaxed mb-4'>
-							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-							laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-							architecto beatae vitae dicta sunt explicabo.
+							Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+							accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+							quae ab illo inventore veritatis et quasi architecto beatae vitae
+							dicta sunt explicabo.
 						</p>
 
 						<p className='text-gray-600 leading-relaxed'>
-							Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-							consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+							Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+							aut fugit, sed quia consequuntur magni dolores eos qui ratione
+							voluptatem sequi nesciunt.
 						</p>
 					</div>
 
@@ -54,13 +60,15 @@ export const AboutUs: React.FC = () => {
 						</h2>
 
 						<p className='text-gray-600 leading-relaxed mb-4'>
-							Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
-							molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+							Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+							esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+							fugiat quo voluptas nulla pariatur?
 						</p>
 
 						<p className='text-gray-600 leading-relaxed'>
-							At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-							voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.
+							At vero eos et accusamus et iusto odio dignissimos ducimus qui
+							blanditiis praesentium voluptatum deleniti atque corrupti quos
+							dolores et quas molestias excepturi.
 						</p>
 					</div>
 				</div>
@@ -76,9 +84,12 @@ export const AboutUs: React.FC = () => {
 							<div className='flex items-start space-x-3'>
 								<FavoriteIcon className='text-red-500 mt-1' />
 								<div>
-									<h3 className='font-semibold text-gray-800'>Amor pelos Animais</h3>
+									<h3 className='font-semibold text-gray-800'>
+										Amor pelos Animais
+									</h3>
 									<p className='text-gray-600'>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+										do eiusmod tempor.
 									</p>
 								</div>
 							</div>
@@ -86,10 +97,12 @@ export const AboutUs: React.FC = () => {
 							<div className='flex items-start space-x-3'>
 								<SecurityIcon className='text-green-500 mt-1' />
 								<div>
-									<h3 className='font-semibold text-gray-800'>Qualidade e Segurança</h3>
+									<h3 className='font-semibold text-gray-800'>
+										Qualidade e Segurança
+									</h3>
 									<p className='text-gray-600'>
-										Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-										aliquip.
+										Ut enim ad minim veniam, quis nostrud exercitation ullamco
+										laboris nisi ut aliquip.
 									</p>
 								</div>
 							</div>
@@ -97,9 +110,12 @@ export const AboutUs: React.FC = () => {
 							<div className='flex items-start space-x-3'>
 								<PeopleIcon className='text-blue-500 mt-1' />
 								<div>
-									<h3 className='font-semibold text-gray-800'>Atendimento Personalizado</h3>
+									<h3 className='font-semibold text-gray-800'>
+										Atendimento Personalizado
+									</h3>
 									<p className='text-gray-600'>
-										Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+										Duis aute irure dolor in reprehenderit in voluptate velit
+										esse cillum dolore.
 									</p>
 								</div>
 							</div>
@@ -109,7 +125,8 @@ export const AboutUs: React.FC = () => {
 								<div>
 									<h3 className='font-semibold text-gray-800'>Excelência</h3>
 									<p className='text-gray-600'>
-										Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.
+										Excepteur sint occaecat cupidatat non proident, sunt in
+										culpa qui officia.
 									</p>
 								</div>
 							</div>
@@ -155,9 +172,9 @@ export const AboutUs: React.FC = () => {
 						</h2>
 
 						<p className='text-gray-600 leading-relaxed mb-4'>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-							exercitation.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation.
 						</p>
 
 						<ul className='space-y-2 text-gray-600'>

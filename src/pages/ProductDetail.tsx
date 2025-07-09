@@ -10,9 +10,9 @@ export default function ProductDetail() {
 	const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
 	const { addToCart, isInCart } = useCart();
 	const [quantity, setQuantity] = useState<number>(1);
-	const [product, setProduct] = useState<import('../contexts/ProductsContext').Product | undefined>(
-		undefined
-	);
+	const [product, setProduct] = useState<
+		import('../contexts/ProductsContext').Product | undefined
+	>(undefined);
 
 	useEffect(() => {
 		if (id && products.length > 0) {
@@ -76,7 +76,9 @@ export default function ProductDetail() {
 		return (
 			<div className='flex flex-col items-center justify-center min-h-[70vh] py-8 px-4'>
 				<p className='text-gray-600 mb-4'>Produto não encontrado. ID: {id}</p>
-				<p className='text-gray-500 mb-4 text-sm'>Produtos disponíveis: {products.length}</p>
+				<p className='text-gray-500 mb-4 text-sm'>
+					Produtos disponíveis: {products.length}
+				</p>
 				<button
 					onClick={handleBackToHome}
 					className='bg-blue1 text-white px-4 py-2 rounded hover:bg-blue2 transition-colors'
@@ -113,21 +115,32 @@ export default function ProductDetail() {
 				{/* Detalhes do produto */}
 				<div className='flex-1 flex flex-col gap-4 justify-center'>
 					<div className='flex items-start justify-between gap-4'>
-						<h1 className='text-2xl md:text-3xl font-bold text-[#1a3565]'>{product.name}</h1>
+						<h1 className='text-2xl md:text-3xl font-bold text-[#1a3565]'>
+							{product.name}
+						</h1>
 						<div className='flex gap-3 text-[#e63963] text-xl mt-1'>
 							<button
-								title={isProductFavorite ? 'Remove from favorites' : 'Add to favorites'}
+								title={
+									isProductFavorite
+										? 'Remove from favorites'
+										: 'Add to favorites'
+								}
 								className={`hover:scale-110 transition ${isProductFavorite ? 'text-red-500' : ''}`}
 								onClick={handleToggleFavorite}
 							>
 								<FaHeart />
 							</button>
-							<button title='Compartilhar' className='hover:scale-110 transition'>
+							<button
+								title='Compartilhar'
+								className='hover:scale-110 transition'
+							>
 								<FaShareAlt />
 							</button>
 						</div>
 					</div>
-					<p className='text-[#1a3565] text-base md:text-lg font-medium'>{product.description}</p>
+					<p className='text-[#1a3565] text-base md:text-lg font-medium'>
+						{product.description}
+					</p>
 					<div className='text-2xl md:text-3xl font-bold text-[#e63963] mt-2'>
 						{product.price.toLocaleString('pt-BR', {
 							style: 'currency',
@@ -137,13 +150,15 @@ export default function ProductDetail() {
 					</div>
 					{/* Quantidade */}
 					<div className='mt-4'>
-						<label className='block text-[#e63963] font-bold mb-1'>Quantidade</label>
+						<label className='block text-[#e63963] font-bold mb-1'>
+							Quantidade
+						</label>
 						<select
 							value={quantity}
-							onChange={(e) => setQuantity(Number(e.target.value))}
+							onChange={e => setQuantity(Number(e.target.value))}
 							className='w-32 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#e63963]'
 						>
-							{[1, 2, 3, 4, 5].map((q) => (
+							{[1, 2, 3, 4, 5].map(q => (
 								<option key={q} value={q}>
 									{q}
 								</option>

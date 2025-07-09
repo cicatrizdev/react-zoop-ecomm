@@ -10,7 +10,10 @@ export function Contact() {
 					</h1>
 					<form className='space-y-4 sm:space-y-6'>
 						<div>
-							<label htmlFor='name' className='block text-sm font-medium text-gray-700 mb-1'>
+							<label
+								htmlFor='name'
+								className='block text-sm font-medium text-gray-700 mb-1'
+							>
 								Name
 							</label>
 							<input
@@ -20,7 +23,10 @@ export function Contact() {
 							/>
 						</div>
 						<div>
-							<label htmlFor='email' className='block text-sm font-medium text-gray-700 mb-1'>
+							<label
+								htmlFor='email'
+								className='block text-sm font-medium text-gray-700 mb-1'
+							>
 								Email
 							</label>
 							<input
@@ -30,7 +36,10 @@ export function Contact() {
 							/>
 						</div>
 						<div>
-							<label htmlFor='message' className='block text-sm font-medium text-gray-700 mb-1'>
+							<label
+								htmlFor='message'
+								className='block text-sm font-medium text-gray-700 mb-1'
+							>
 								Message
 							</label>
 							<textarea

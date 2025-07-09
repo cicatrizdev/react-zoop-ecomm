@@ -10,28 +10,31 @@ export function About() {
 					</h1>
 					<div className='prose prose-sm sm:prose-base lg:prose-lg text-gray-600'>
 						<p className='text-sm sm:text-base leading-relaxed'>
-							This is a sample React application built with modern web technologies:
+							This is a sample React application built with modern web
+							technologies:
 						</p>
 						<ul className='space-y-2 text-sm sm:text-base'>
 							<li>
 								<strong>Vite</strong> - Fast build tool and development server
 							</li>
 							<li>
-								<strong>React</strong> - Popular JavaScript library for building user interfaces
+								<strong>React</strong> - Popular JavaScript library for building
+								user interfaces
 							</li>
 							<li>
 								<strong>TypeScript</strong> - Type-safe JavaScript that scales
 							</li>
 							<li>
-								<strong>React Router</strong> - Declarative routing for React applications
+								<strong>React Router</strong> - Declarative routing for React
+								applications
 							</li>
 							<li>
 								<strong>Tailwind CSS</strong> - Utility-first CSS framework
 							</li>
 						</ul>
 						<p className='text-sm sm:text-base leading-relaxed'>
-							This setup provides a solid foundation for building modern web applications with
-							excellent developer experience and performance.
+							This setup provides a solid foundation for building modern web
+							applications with excellent developer experience and performance.
 						</p>
 					</div>
 					<div className='mt-6 sm:mt-8 text-center sm:text-left'>

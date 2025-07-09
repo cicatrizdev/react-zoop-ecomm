@@ -25,4 +25,6 @@ export interface FavoritesContextType {
 	isFavorite: (productId: string | number) => boolean;
 }
 
-export const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
+export const FavoritesContext = createContext<FavoritesContextType | undefined>(
+	undefined
+);

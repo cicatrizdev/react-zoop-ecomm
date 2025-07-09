@@ -14,4 +14,6 @@ export interface CategoriesContextType {
 	getCategoryById: (id: number) => Category | undefined;
 }
 
-export const CategoriesContext = createContext<CategoriesContextType | undefined>(undefined);
+export const CategoriesContext = createContext<
+	CategoriesContextType | undefined
+>(undefined);

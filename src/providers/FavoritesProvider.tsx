@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import type { ReactNode } from 'react';
+import React, { useEffect, useState, type ReactNode } from 'react';
 import {
 	FavoritesContext,
 	type FavoritesContextType,
 	type FavoriteProduct,
-} from './FavoritesContext';
+} from '../contexts/FavoritesContext';
 
 interface FavoritesProviderProps {
 	children: ReactNode;
 }
 
-export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }) => {
+export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({
+	children,
+}) => {
 	const [favorites, setFavorites] = useState<FavoriteProduct[]>([]);
 
 	// Load favorites from localStorage on mount
@@ -19,8 +20,8 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
 		if (savedFavorites) {
 			try {
 				setFavorites(JSON.parse(savedFavorites));
-			} catch (error) {
-				console.error('Error loading favorites from localStorage:', error);
+			} catch {
+				// Error loading favorites from localStorage
 			}
 		}
 	}, []);
@@ -30,17 +31,24 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
 		localStorage.setItem('favorites', JSON.stringify(favorites));
 	}, [favorites]);
 
-	// Cálculo ineficiente - executa a cada render (SEM useMemo)
+	// Inefficient calculation - runs on every render (WITHOUT useMemo)
 	const totalFavorites = (() => {
 		return favorites.length;
 	})();
 
-	// Cálculo de estatísticas ineficiente - executa a cada render
+	// Inefficient statistics calculation - runs on every render
 	const favoritesStats = (() => {
-		const totalPrice = favorites.reduce((sum, product) => sum + product.price, 0);
+		const totalPrice = favorites.reduce(
+			(sum, product) => sum + product.price,
+			0
+		);
 		const averagePrice = totalPrice / favorites.length || 0;
-		const expensiveFavorites = favorites.filter((product) => product.price > averagePrice).length;
-		const cheapFavorites = favorites.filter((product) => product.price <= averagePrice).length;
+		const expensiveFavorites = favorites.filter(
+			product => product.price > averagePrice
+		).length;
+		const cheapFavorites = favorites.filter(
+			product => product.price <= averagePrice
+		).length;
 
 		return {
 			totalPrice,
@@ -50,7 +58,7 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
 		};
 	})();
 
-	// Função recriada a cada render (SEM useCallback)
+	// Function recreated on every render (WITHOUT useCallback)
 	const addToFavorites = (product: {
 		id: string | number;
 		name: string;
@@ -59,8 +67,10 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
 		description: string;
 		categoryId: string | number;
 	}) => {
-		setFavorites((prevFavorites) => {
-			const existingFavorite = prevFavorites.find((favorite) => favorite.id === product.id);
+		setFavorites(prevFavorites => {
+			const existingFavorite = prevFavorites.find(
+				favorite => favorite.id === product.id
+			);
 
 			if (existingFavorite) {
 				// Product is already in favorites, don't add again
@@ -71,45 +81,52 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
 		});
 	};
 
-	// Função recriada a cada render (SEM useCallback)
+	// Function recreated on every render (WITHOUT useCallback)
 	const removeFromFavorites = (productId: string | number) => {
-		setFavorites((prevFavorites) => prevFavorites.filter((favorite) => favorite.id !== productId));
+		setFavorites(prevFavorites =>
+			prevFavorites.filter(favorite => favorite.id !== productId)
+		);
 	};
 
-	// Função recriada a cada render (SEM useCallback)
+	// Function recreated on every render (WITHOUT useCallback)
 	const clearFavorites = () => {
 		setFavorites([]);
 	};
 
-	// Função ineficiente - executa a cada render
+	// Inefficient function - runs on every render
 	const isFavorite = (productId: string | number): boolean => {
-		return favorites.some((favorite) => favorite.id === productId);
+		return favorites.some(favorite => favorite.id === productId);
 	};
 
-	// Função para obter favoritos agrupados por categoria (cálculo pesado)
+	// Function to get favorites grouped by category (heavy calculation)
 	const getFavoritesByCategory = () => {
-		const grouped = favorites.reduce((acc, product) => {
-			// Simula obtenção de categoria (em um caso real, viria do produto)
-			const category = product.price > 50 ? 'Premium' : 'Regular';
-			if (!acc[category]) {
-				acc[category] = [];
-			}
-			acc[category].push(product);
-			return acc;
-		}, {} as Record<string, FavoriteProduct[]>);
+		const grouped = favorites.reduce(
+			(acc, product) => {
+				// Simulates category retrieval (in a real case, it would come from the product)
+				const category = product.price > 50 ? 'Premium' : 'Regular';
+				if (!acc[category]) {
+					acc[category] = [];
+				}
+				acc[category].push(product);
+				return acc;
+			},
+			{} as Record<string, FavoriteProduct[]>
+		);
 
 		return grouped;
 	};
 
-	// Função para obter produtos similares (cálculo pesado)
+	// Function to get similar products (heavy calculation)
 	const getSimilarProducts = (productId: string | number) => {
-		const currentProduct = favorites.find((fav) => fav.id === productId);
+		const currentProduct = favorites.find(fav => fav.id === productId);
 		if (!currentProduct) return [];
 
-		// Simula busca por produtos similares baseado em preço e categoria
+		// Simulates search for similar products based on price and category
 		return favorites
 			.filter(
-				(product) => product.id !== productId && Math.abs(product.price - currentProduct.price) < 20
+				product =>
+					product.id !== productId &&
+					Math.abs(product.price - currentProduct.price) < 20
 			)
 			.slice(0, 3);
 	};
@@ -125,7 +142,7 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
 
 	return (
 		<FavoritesContext.Provider value={value}>
-			{/* Cálculos pesados sendo exibidos (causam re-renders) */}
+			{/* Heavy calculations being displayed (cause re-renders) */}
 			<div style={{ display: 'none' }}>
 				{JSON.stringify(favoritesStats)}
 				{JSON.stringify(getFavoritesByCategory())}

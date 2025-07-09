@@ -1,5 +1,8 @@
 import { useContext } from 'react';
-import { CategoriesContext, type CategoriesContextType } from '../contexts/CategoriesContext';
+import {
+	CategoriesContext,
+	type CategoriesContextType,
+} from '../contexts/CategoriesContext';
 
 export const useCategories = (): CategoriesContextType => {
 	const context = useContext(CategoriesContext);

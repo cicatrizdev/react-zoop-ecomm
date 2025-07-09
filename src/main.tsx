@@ -2,7 +2,13 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.tsx';
-import { CategoriesProvider, ProductsProvider, CartProvider, FavoritesProvider } from './contexts';
+import {
+	CategoriesProvider,
+	ProductsProvider,
+	CartProvider,
+	FavoritesProvider,
+	SearchProvider,
+} from './providers';
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
@@ -10,7 +16,9 @@ createRoot(document.getElementById('root')!).render(
 			<ProductsProvider>
 				<CartProvider>
 					<FavoritesProvider>
-						<App />
+						<SearchProvider>
+							<App />
+						</SearchProvider>
 					</FavoritesProvider>
 				</CartProvider>
 			</ProductsProvider>

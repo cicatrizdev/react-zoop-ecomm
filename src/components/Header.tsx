@@ -3,11 +3,22 @@ import { Link } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import logo1 from '../assets/logo-1.svg';
-import { useFavorites, useCart } from '../hooks';
+import SearchInput from './SearchInput';
+import { useFavorites, useCart, useSearch } from '../hooks';
 
 const Header: React.FC = () => {
 	const { totalFavorites } = useFavorites();
 	const { totalItems } = useCart();
+	const { searchTerm, setSearchTerm } = useSearch();
+
+	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setSearchTerm(e.target.value);
+	};
+
+	const handleSearchSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		// Search will be processed automatically on Home through context
+	};
 
 	return (
 		<header className='w-full flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 py-4 bg-white shadow-sm gap-4 sm:gap-0'>
@@ -20,13 +31,16 @@ const Header: React.FC = () => {
 			</Link>
 
 			{/* Busca - oculta em mobile, aparece em desktop */}
-			<div className='hidden sm:flex flex-1 mx-8 max-w-lg'>
-				<input
-					type='text'
+			<form
+				onSubmit={handleSearchSubmit}
+				className='hidden sm:flex flex-1 mx-8 max-w-lg'
+			>
+				<SearchInput
 					placeholder='Digite aqui o produto que você busca'
-					className='w-full border border-gray2 rounded px-4 py-2 font-montserrat focus:outline-none focus:ring-2 focus:ring-magenta1'
+					value={searchTerm}
+					onChange={handleSearch}
 				/>
-			</div>
+			</form>
 
 			{/* Navegação e Ícones */}
 			<div className='flex items-center gap-4 sm:gap-6 lg:gap-8'>
@@ -70,13 +84,13 @@ const Header: React.FC = () => {
 			</div>
 
 			{/* Busca mobile - aparece apenas em mobile */}
-			<div className='w-full sm:hidden'>
-				<input
-					type='text'
+			<form onSubmit={handleSearchSubmit} className='w-full sm:hidden'>
+				<SearchInput
 					placeholder='Digite aqui o produto que você busca'
-					className='w-full border border-gray2 rounded px-4 py-2 font-montserrat focus:outline-none focus:ring-2 focus:ring-magenta1'
+					value={searchTerm}
+					onChange={handleSearch}
 				/>
-			</div>
+			</form>
 		</header>
 	);
 };

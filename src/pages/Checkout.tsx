@@ -13,7 +13,10 @@ const orderSummary = [
 	},
 ];
 
-const total = orderSummary.reduce((sum, item) => sum + item.price * item.quantity, 0);
+const total = orderSummary.reduce(
+	(sum, item) => sum + item.price * item.quantity,
+	0
+);
 
 export default function Checkout() {
 	return (
@@ -21,7 +24,9 @@ export default function Checkout() {
 			<div className='w-full max-w-5xl bg-white rounded-lg shadow-md p-6 md:p-10 flex flex-col md:flex-row gap-10'>
 				{/* Formulário do cliente */}
 				<form className='flex-1 flex flex-col gap-4'>
-					<h1 className='text-2xl md:text-3xl font-bold text-[#1a3565] mb-4'>Checkout</h1>
+					<h1 className='text-2xl md:text-3xl font-bold text-[#1a3565] mb-4'>
+						Checkout
+					</h1>
 					<input
 						type='text'
 						placeholder='Nome completo'
@@ -68,14 +73,17 @@ export default function Checkout() {
 				</form>
 				{/* Resumo do pedido */}
 				<div className='flex-1 bg-[#f5f8fc] rounded-lg p-6 flex flex-col gap-4 border border-gray-200'>
-					<h2 className='text-xl font-bold text-[#1a3565] mb-2'>Resumo do pedido</h2>
+					<h2 className='text-xl font-bold text-[#1a3565] mb-2'>
+						Resumo do pedido
+					</h2>
 					{orderSummary.map((item, idx) => (
 						<div
 							key={idx}
 							className='flex justify-between items-center border-b pb-2 last:border-b-0'
 						>
 							<span className='text-[#1a3565]'>
-								{item.name} <span className='text-xs text-gray-500'>x{item.quantity}</span>
+								{item.name}{' '}
+								<span className='text-xs text-gray-500'>x{item.quantity}</span>
 							</span>
 							<span className='text-[#e63963] font-bold'>
 								{(item.price * item.quantity).toLocaleString('pt-BR', {
@@ -88,7 +96,10 @@ export default function Checkout() {
 					<div className='flex justify-between items-center mt-4'>
 						<span className='text-lg font-bold text-[#1a3565]'>Total:</span>
 						<span className='text-2xl font-bold text-[#e63963]'>
-							{total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+							{total.toLocaleString('pt-BR', {
+								style: 'currency',
+								currency: 'BRL',
+							})}
 						</span>
 					</div>
 				</div>

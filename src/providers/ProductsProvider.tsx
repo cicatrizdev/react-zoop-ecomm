@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import type { ReactNode } from 'react';
-import { ProductsContext, type ProductsContextType, type Product } from './ProductsContext';
+import React, { useEffect, useState, type ReactNode } from 'react';
+import {
+	ProductsContext,
+	type ProductsContextType,
+	type Product,
+} from '../contexts/ProductsContext';
 
 interface ProductsProviderProps {
 	children: ReactNode;
 }
 
-export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) => {
+export const ProductsProvider: React.FC<ProductsProviderProps> = ({
+	children,
+}) => {
 	const [products, setProducts] = useState<Product[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
@@ -31,46 +36,59 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
 		fetchProducts();
 	}, []);
 
-	// Função ineficiente - executa a cada render (SEM useMemo)
+	// Inefficient function - runs on every render (WITHOUT useMemo)
 	const getProductById = (id: string | number): Product | undefined => {
-		return products.find((product) => product.id === id || String(product.id) === String(id));
-	};
-
-	// Função ineficiente - executa a cada render (SEM useMemo)
-	const getProductsByCategory = (categoryId: string | number): Product[] => {
-		return products.filter(
-			(product) =>
-				product.categoryId === categoryId || String(product.categoryId) === String(categoryId)
+		return products.find(
+			product => product.id === id || String(product.id) === String(id)
 		);
 	};
 
-	// Função ineficiente - executa a cada render (SEM useMemo)
+	// Inefficient function - runs on every render (WITHOUT useMemo)
+	const getProductsByCategory = (categoryId: string | number): Product[] => {
+		return products.filter(
+			product =>
+				product.categoryId === categoryId ||
+				String(product.categoryId) === String(categoryId)
+		);
+	};
+
+	// Inefficient function - runs on every render (WITHOUT useMemo)
 	const searchProducts = (query: string): Product[] => {
 		const lowercaseQuery = query.toLowerCase();
 		return products.filter(
-			(product) =>
+			product =>
 				product.name.toLowerCase().includes(lowercaseQuery) ||
 				product.description.toLowerCase().includes(lowercaseQuery)
 		);
 	};
 
-	// Cálculo de estatísticas ineficiente - executa a cada render
+	// Inefficient statistics calculation - runs on every render
 	const productsStats = (() => {
 		const totalProducts = products.length;
-		const totalPrice = products.reduce((sum, product) => sum + product.price, 0);
+		const totalPrice = products.reduce(
+			(sum, product) => sum + product.price,
+			0
+		);
 		const averagePrice = totalPrice / totalProducts || 0;
-		const expensiveProducts = products.filter((product) => product.price > averagePrice).length;
-		const cheapProducts = products.filter((product) => product.price <= averagePrice).length;
+		const expensiveProducts = products.filter(
+			product => product.price > averagePrice
+		).length;
+		const cheapProducts = products.filter(
+			product => product.price <= averagePrice
+		).length;
 
-		// Agrupamento por categoria (cálculo pesado)
-		const productsByCategory = products.reduce((acc, product) => {
-			const categoryId = String(product.categoryId);
-			if (!acc[categoryId]) {
-				acc[categoryId] = [];
-			}
-			acc[categoryId].push(product);
-			return acc;
-		}, {} as Record<string, Product[]>);
+		// Grouping by category (heavy calculation)
+		const productsByCategory = products.reduce(
+			(acc, product) => {
+				const categoryId = String(product.categoryId);
+				if (!acc[categoryId]) {
+					acc[categoryId] = [];
+				}
+				acc[categoryId].push(product);
+				return acc;
+			},
+			{} as Record<string, Product[]>
+		);
 
 		return {
 			totalProducts,
@@ -82,15 +100,15 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
 		};
 	})();
 
-	// Função para obter produtos recomendados (cálculo pesado)
+	// Function to get recommended products (heavy calculation)
 	const getRecommendedProducts = (productId: string | number) => {
-		const currentProduct = products.find((p) => p.id === productId);
+		const currentProduct = products.find(p => p.id === productId);
 		if (!currentProduct) return [];
 
-		// Simula algoritmo de recomendação baseado em preço e categoria
+		// Simulates recommendation algorithm based on price and category
 		return products
 			.filter(
-				(product) =>
+				product =>
 					product.id !== productId &&
 					product.categoryId === currentProduct.categoryId &&
 					Math.abs(product.price - currentProduct.price) < 30
@@ -98,11 +116,14 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
 			.slice(0, 4);
 	};
 
-	// Função para obter produtos em promoção (cálculo pesado)
+	// Function to get products on sale (heavy calculation)
 	const getProductsOnSale = () => {
 		const averagePrice =
-			products.reduce((sum, product) => sum + product.price, 0) / products.length || 0;
-		return products.filter((product) => product.price < averagePrice * 0.8).slice(0, 6);
+			products.reduce((sum, product) => sum + product.price, 0) /
+				products.length || 0;
+		return products
+			.filter(product => product.price < averagePrice * 0.8)
+			.slice(0, 6);
 	};
 
 	const value: ProductsContextType = {
@@ -116,7 +137,7 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
 
 	return (
 		<ProductsContext.Provider value={value}>
-			{/* Cálculos pesados sendo exibidos (causam re-renders) */}
+			{/* Heavy calculations being displayed (cause re-renders) */}
 			<div style={{ display: 'none' }}>
 				{JSON.stringify(productsStats)}
 				{JSON.stringify(getRecommendedProducts(products[0]?.id || 0))}

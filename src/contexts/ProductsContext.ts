@@ -18,4 +18,6 @@ export interface ProductsContextType {
 	searchProducts: (query: string) => Product[];
 }
 
-export const ProductsContext = createContext<ProductsContextType | undefined>(undefined);
+export const ProductsContext = createContext<ProductsContextType | undefined>(
+	undefined
+);

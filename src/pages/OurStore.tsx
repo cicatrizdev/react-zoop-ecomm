@@ -7,7 +7,9 @@ import EmailIcon from '@mui/icons-material/Email';
 export const OurStore: React.FC = () => {
 	return (
 		<div className='max-w-6xl mx-auto px-4 py-8'>
-			<h1 className='text-3xl font-bold text-gray-800 mb-6 font-montserrat'>Nossa Loja</h1>
+			<h1 className='text-3xl font-bold text-gray-800 mb-6 font-montserrat'>
+				Nossa Loja
+			</h1>
 
 			<div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
 				{/* Informações da Loja */}
@@ -51,7 +53,9 @@ export const OurStore: React.FC = () => {
 							<div className='flex items-start space-x-3'>
 								<AccessTimeIcon className='text-blue1 mt-1' />
 								<div>
-									<h3 className='font-semibold text-gray-800'>Horário de Funcionamento</h3>
+									<h3 className='font-semibold text-gray-800'>
+										Horário de Funcionamento
+									</h3>
 									<p className='text-gray-600'>
 										Segunda a Sexta: 9h às 18h
 										<br />
@@ -91,15 +95,17 @@ export const OurStore: React.FC = () => {
 						</h2>
 
 						<p className='text-gray-600 leading-relaxed mb-4'>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-							exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation ullamco laboris
+							nisi ut aliquip ex ea commodo consequat.
 						</p>
 
 						<p className='text-gray-600 leading-relaxed'>
-							Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-							nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-							officia deserunt mollit anim id est laborum.
+							Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+							cupidatat non proident, sunt in culpa qui officia deserunt mollit
+							anim id est laborum.
 						</p>
 					</div>
 				</div>

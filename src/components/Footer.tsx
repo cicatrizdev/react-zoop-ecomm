@@ -22,17 +22,26 @@ const Footer: React.FC = () => (
 				<h4 className='font-semibold mb-3 text-base'>Institucional</h4>
 				<ul className='space-y-2 text-sm'>
 					<li>
-						<a href='/nossa-historia' className='hover:underline transition-colors duration-200'>
+						<a
+							href='/nossa-historia'
+							className='hover:underline transition-colors duration-200'
+						>
 							Nossa história
 						</a>
 					</li>
 					<li>
-						<a href='/carreiras' className='hover:underline transition-colors duration-200'>
+						<a
+							href='/carreiras'
+							className='hover:underline transition-colors duration-200'
+						>
 							Carreiras
 						</a>
 					</li>
 					<li>
-						<a href='/nossa-loja' className='hover:underline transition-colors duration-200'>
+						<a
+							href='/nossa-loja'
+							className='hover:underline transition-colors duration-200'
+						>
 							Nossa loja
 						</a>
 					</li>
