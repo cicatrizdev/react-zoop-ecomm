@@ -72,6 +72,7 @@ export function Home() {
 	// Search results
 	const searchResults = searchTerm
 		? (() => {
+				console.log('CHAMOU A FUNÇÃO DE BUSCA');
 				const lowercaseQuery = searchTerm.toLowerCase();
 				return products.filter(
 					product =>
