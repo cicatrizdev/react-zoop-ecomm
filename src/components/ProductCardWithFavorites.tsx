@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 import ProductCard from './ProductCard';
 import FavoritesButton from './FavoritesButton';
 
@@ -31,14 +31,16 @@ const ProductCardWithFavorites: React.FC<ProductCardWithFavoritesProps> = memo(
 		product,
 		showAddToCart = false,
 	}) => {
-		// console.log('CHAMOU A FUNÇÃO DE PRODUCT CARD WITH FAVORITES');
 		// Convert product to the format expected by ProductCard
-		const productForCart = {
-			id: Number(product.id),
-			name: product.name,
-			price: product.price,
-			image: product.image,
-		};
+		const productForCart = useMemo(
+			() => ({
+				id: Number(product.id),
+				name: product.name,
+				price: product.price,
+				image: product.image,
+			}),
+			[product]
+		);
 
 		return (
 			<div className='relative'>
@@ -58,6 +60,9 @@ const ProductCardWithFavorites: React.FC<ProductCardWithFavoritesProps> = memo(
 				/>
 			</div>
 		);
+	},
+	(prevProps, nextProps) => {
+		return prevProps.product.id === nextProps.product.id;
 	}
 );
 
