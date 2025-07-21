@@ -39,12 +39,13 @@ export function Home() {
 		navigate(`/product/${productId}`);
 	};
 
-	const randomProducts = (() => {
+	const randomProducts = () => {
+		console.log('CHAMOU A FUNÇÃO');
 		if (products.length === 0) return [];
 
 		const shuffled = [...products].sort(() => 0.5 - Math.random());
 		return shuffled.slice(0, 4);
-	})();
+	};
 
 	const filteredProducts = selectedCategory
 		? (() => {
@@ -332,9 +333,9 @@ export function Home() {
 
 						{!productsLoading &&
 							!productsError &&
-							randomProducts.length > 0 && (
+							randomProducts().length > 0 && (
 								<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6'>
-									{randomProducts.map(product => (
+									{randomProducts().map(product => (
 										<ProductCardWithFavorites
 											key={product.id}
 											image={product.image}
