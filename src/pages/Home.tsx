@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CategoryCard from '../components/CategoryCard';
 import ProductCardWithFavorites from '../components/ProductCardWithFavorites';
@@ -22,8 +22,8 @@ export function Home() {
 	} = useProducts();
 	const { searchTerm, clearSearch } = useSearch();
 
-	const handleOpen = () => setShowWelcome(true);
-	const handleClose = () => setShowWelcome(false);
+	const handleOpen = useCallback(() => setShowWelcome(true), []);
+	const handleClose = useCallback(() => setShowWelcome(false), []);
 
 	const handleCategoryClick = (categoryId: string | number) => {
 		setSelectedCategory(categoryId);
@@ -40,7 +40,7 @@ export function Home() {
 	};
 
 	const randomProducts = () => {
-		console.log('CHAMOU A FUNÇÃO');
+		// console.log('CHAMOU A FUNÇÃO');
 		if (products.length === 0) return [];
 
 		const shuffled = [...products].sort(() => 0.5 - Math.random());
@@ -72,7 +72,7 @@ export function Home() {
 	// Search results
 	const searchResults = searchTerm
 		? (() => {
-				console.log('CHAMOU A FUNÇÃO DE BUSCA');
+				// console.log('CHAMOU A FUNÇÃO DE BUSCA');
 				const lowercaseQuery = searchTerm.toLowerCase();
 				return products.filter(
 					product =>

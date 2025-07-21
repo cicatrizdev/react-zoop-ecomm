@@ -8,7 +8,6 @@ interface WelcomeModalProps {
 }
 
 const WelcomeModal: React.FC<WelcomeModalProps> = memo(({ open, onClose }) => {
-	// console.log('CHAMOU A FUNÇÃO DE WELCOME MODAL');
 	if (!open) return null;
 
 	return (

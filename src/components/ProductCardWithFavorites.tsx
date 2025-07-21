@@ -31,7 +31,7 @@ const ProductCardWithFavorites: React.FC<ProductCardWithFavoritesProps> = memo(
 		product,
 		showAddToCart = false,
 	}) => {
-		console.log('CHAMOU A FUNÇÃO DE PRODUCT CARD WITH FAVORITES');
+		// console.log('CHAMOU A FUNÇÃO DE PRODUCT CARD WITH FAVORITES');
 		// Convert product to the format expected by ProductCard
 		const productForCart = {
 			id: Number(product.id),
