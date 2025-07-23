@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 
@@ -7,7 +7,7 @@ interface WelcomeModalProps {
 	onClose: () => void;
 }
 
-const WelcomeModal: React.FC<WelcomeModalProps> = ({ open, onClose }) => {
+const WelcomeModal: React.FC<WelcomeModalProps> = memo(({ open, onClose }) => {
 	if (!open) return null;
 
 	return (
@@ -41,6 +41,6 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ open, onClose }) => {
 			</div>
 		</div>
 	);
-};
+});
 
 export default WelcomeModal;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const orderSummary = [
 	{
 		name: 'Notebook Samsung NP550XDA KU1BR',
